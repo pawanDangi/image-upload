@@ -1,0 +1,54 @@
+{
+  "name": "rentomojo-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "server": "NODE_ENV=dev nodemon --exec babel-node server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "prod-start": "NODE_ENV=prod nodemon --exec babel-node server.js",
+    "prod": "npm install && npm install --prefix client && npm audit fix --prefix client && npm run build --prefix client && npm run prod-start",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "bitstring": "^1.0.0",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "connect-busboy": "0.0.2",
+    "elastic-builder": "^2.3.0",
+    "express": "^4.16.4",
+    "formidable": "^1.2.1",
+    "multer": "^1.4.2",
+    "sequelize": "^4.43.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.4",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-react-app": "^3.0.8",
+    "eslint-plugin-flowtype": "^3.6.1",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "husky": "^0.14.3",
+    "lint-staged": "^8.1.5",
+    "nodemon": "^1.18.10",
+    "prettier": "^1.17.0"
+  }
+}
